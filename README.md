@@ -2,8 +2,9 @@
 
 A beginner-friendly Git docs site: **common commands first**, workflow diagram, full-width cheat sheet, left-aligned nav. Built with [Starlight](https://starlight.astro.build/).
 
-- **Live:** https://amdphreak.github.io/git-docs/ (after deploy)
+- **Live (projected):** https://amdphreak.github.io/git-docs/ (after deploy)
 - **Local:** `pnpm install` then `pnpm dev`
+- **Custom domain ideas:** see [DOMAIN_IDEAS.md](DOMAIN_IDEAS.md)
 
 ## Structure
 
@@ -18,4 +19,12 @@ GitHub Actions deploys to GitHub Pages on push to `main`. Repo must have Pages e
 
 ## License
 
-MIT.
+GPL-3.0 (copyleft). See [LICENSE](LICENSE).
+
+## GitHub About
+
+After pushing, set the repo description and projected URL:
+
+```bash
+gh repo edit AMDphreak/git-docs --description "Sensible Git reference — common commands first. Projected URL: https://amdphreak.github.io/git-docs/" --homepage "https://amdphreak.github.io/git-docs/"
+```
