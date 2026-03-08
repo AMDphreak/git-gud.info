@@ -21,7 +21,7 @@ export default defineConfig({
 				SiteTitle: './src/components/SiteTitle.astro',
 				Sidebar: './src/components/Sidebar.astro',
 			},
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/AMDphreak/git-docs' }],
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/AMDphreak/git-gud.info' }],
 			customCss: ['./src/styles/custom.css'],
 			sidebar: [
 				{ label: 'Home', slug: 'index' },
