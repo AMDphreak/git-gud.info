@@ -1,0 +1,2 @@
+/* Left sidebar is default in Starlight; optional overrides */
+.sl-sidebar { position: sticky; top: 0; }

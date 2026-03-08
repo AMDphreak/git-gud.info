@@ -1,0 +1,47 @@
+---
+title: Git
+description: A sensible Git reference — common commands first.
+hero:
+  tagline: Common commands first. No maze, no jargon.
+  actions:
+    - text: Cheat sheet
+      link: /cheat-sheet/
+      icon: right-arrow
+    - text: Workflow diagram
+      link: /workflow/
+      icon: document
+      variant: minimal
+---
+
+<details class="getting-started-collapse">
+<summary><strong>Getting started</strong> — Install Git and make your first commit</summary>
+
+1. **Install:** [git-scm.com](https://git-scm.com) or `winget install Git.Git` (Windows), `xcode-select --install` (macOS).
+2. **Configure once:** `git config --global user.name "Your Name"` and `git config --global user.email "you@example.com"`
+3. **Get a repo:** `git clone <url>` or `git init`
+4. **First commit:** `git add .` → `git commit -m "First commit"` → `git push -u origin main` (if you use a remote)
+
+Full steps: [Getting started](/getting-started/)
+
+</details>
+
+## Quick links
+
+- **[Cheat sheet](/cheat-sheet/)** — Full-width command reference (most used first)
+- **[Workflow](/workflow/)** — Mermaid diagram: how clone, status, add, commit, push, pull, branch, merge, log, diff fit together
+- **[Getting started](/getting-started/)** — Install and first commit
+- **Commands** — Use the left sidebar for each command, ordered by how often you’ll use them
+
+<style>{`
+.getting-started-collapse {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  background: #f1f5f9;
+}
+.getting-started-collapse summary {
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+`}</style>
