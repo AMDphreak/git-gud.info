@@ -1,0 +1,78 @@
+---
+import { logos } from 'virtual:starlight/user-images';
+import config from 'virtual:starlight/user-config';
+const { siteTitle, siteTitleHref } = Astro.locals.starlightRoute;
+---
+
+<a href={siteTitleHref} class="site-title sl-flex">
+	{
+		config.logo && logos.dark && (
+			<>
+				<img
+					class:list={{ 'light:sl-hidden print:hidden': !('src' in config.logo) }}
+					alt={config.logo.alt}
+					src={logos.dark.src}
+					width={logos.dark.width}
+					height={logos.dark.height}
+				/>
+				{!('src' in config.logo) && (
+					<img
+						class="dark:sl-hidden print:block"
+						alt={config.logo.alt}
+						src={logos.light?.src}
+						width={logos.light?.width}
+						height={logos.light?.height}
+					/>
+				)}
+			</>
+		)
+	}
+	<span class:list={{ 'sr-only': config.logo?.replacesTitle }} translate="no">
+		{(() => {
+			const dash = siteTitle.indexOf('-');
+			if (dash >= 0) {
+				const terminalPart = siteTitle.slice(0, dash);
+				const rest = siteTitle.slice(dash);
+				return [<span class="title-terminal">{terminalPart}</span>, rest];
+			}
+			return siteTitle;
+		})()}
+	</span>
+</a>
+
+<style>
+	@layer starlight.core {
+		.site-title {
+			align-items: center;
+			gap: var(--sl-nav-gap);
+			font-size: var(--sl-text-h4);
+			font-weight: 600;
+			color: var(--sl-color-text-accent);
+			text-decoration: none;
+			white-space: nowrap;
+			min-width: 0;
+		}
+		.site-title span {
+			overflow: hidden;
+		}
+		.site-title .title-terminal {
+			color: #1d2baf;
+			font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-shadow: 0 0 6px rgba(0, 68, 255, 0.4);
+		}
+		/* Dark mode: terminal green. Theme is set on <html> by ThemeSelect. */
+		html[data-theme="dark"] .site-title .title-terminal {
+			color: #00ff41;
+			text-shadow: 0 0 6px rgba(0, 255, 64, 0.658);
+		}
+		.site-title img {
+			height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y));
+			width: auto;
+			max-width: 100%;
+			object-fit: contain;
+			object-position: 0 50%;
+		}
+	}
+</style>

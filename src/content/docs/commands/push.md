@@ -1,13 +1,16 @@
 ---
 title: git push
-description: Send your commits to the remote (e.g. GitHub).
+description: Sends your commits to the internet.
 ---
 
 ```bash
-git push                    # push current branch to its upstream
-git push -u origin main     # first time: set upstream and push
-git push origin <branch>   # push a specific branch
+git push
+git push -u origin main
+git push origin branch-name
 ```
 
-- **Upstream:** The remote branch your branch tracks. Set it once with `-u origin main`, then `git push` is enough.
-- If the remote has new commits, pull first: `git pull` then `git push`.
+**What it does:**
+
+- Sends your commits to the remote (for example GitHub).
+- First time you push a branch, use: `git push -u origin main`. The `-u` remembers where to push. After that, `git push` is enough.
+- If the remote has new commits, run `git pull` first, then `git push`.

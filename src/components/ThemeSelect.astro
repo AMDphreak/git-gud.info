@@ -1,0 +1,141 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+const label = Astro.locals.t?.('themeSelect.accessibleLabel') ?? 'Toggle theme';
+---
+
+<div class="theme-toggle-wrapper">
+	<button
+		type="button"
+		class="theme-toggle"
+		aria-label={label}
+		data-theme-toggle
+		data-theme-preference="auto"
+	>
+		<span class="theme-toggle-icons">
+			<span data-icon-light aria-hidden="true">
+				<Icon name="sun" class="label-icon" />
+			</span>
+			<span data-icon-dark aria-hidden="true">
+				<Icon name="moon" class="label-icon" />
+			</span>
+			<span data-icon-auto aria-hidden="true">
+				<Icon name="laptop" class="label-icon" />
+			</span>
+		</span>
+	</button>
+</div>
+
+<style>
+	.theme-toggle-wrapper {
+		margin-inline: 0.5rem;
+	}
+	.theme-toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.25rem;
+		padding: 0;
+		border: 1px solid var(--sl-color-gray-5, #94a3b8);
+		border-radius: 6px;
+		background: var(--sl-color-accent-low, #f1f5f9);
+		color: var(--sl-color-text, #1e293b);
+		cursor: pointer;
+		transition: background 0.15s, border-color 0.15s, color 0.15s;
+	}
+	.theme-toggle:hover {
+		background: var(--sl-color-accent, #4f46e5);
+		color: var(--sl-color-accent-overlay, #fff);
+		border-color: var(--sl-color-accent, #4f46e5);
+	}
+	.theme-toggle-icons {
+		position: relative;
+		width: 1.125rem;
+		height: 1.125rem;
+		display: block;
+	}
+	.theme-toggle-icons > span {
+		position: absolute;
+		inset: 0;
+		display: none;
+		align-items: center;
+		justify-content: center;
+	}
+	.theme-toggle .label-icon {
+		width: 1.125rem;
+		height: 1.125rem;
+	}
+	.theme-toggle[data-theme-preference="light"] [data-icon-light],
+	.theme-toggle[data-theme-preference="dark"] [data-icon-dark],
+	.theme-toggle[data-theme-preference="auto"] [data-icon-auto] {
+		display: flex;
+	}
+</style>
+
+<script>
+	const storageKey = 'starlight-theme';
+
+	/** @returns {'light' | 'dark'} */
+	function getPreferredColorScheme() {
+		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	}
+
+	/** @param {string | null} val @returns {'auto' | 'light' | 'dark'} */
+	function parsePreference(val) {
+		if (val === 'light' || val === 'dark' || val === 'auto') return val;
+		if (val === '') return 'auto';
+		return 'auto';
+	}
+
+	/** @returns {'auto' | 'light' | 'dark'} */
+	function loadTheme() {
+		if (typeof localStorage === 'undefined') return 'auto';
+		return parsePreference(localStorage.getItem(storageKey));
+	}
+
+	/** @param {'auto' | 'light' | 'dark'} preference */
+	function setTheme(preference) {
+		const resolved = preference === 'auto' ? getPreferredColorScheme() : preference;
+		document.documentElement.dataset.theme = resolved;
+		if (typeof localStorage !== 'undefined') {
+			localStorage.setItem(storageKey, preference === 'light' || preference === 'dark' ? preference : '');
+		}
+		const provider = window['StarlightThemeProvider'];
+		if (provider?.updatePickers) provider.updatePickers(preference);
+		const btn = document.querySelector('[data-theme-toggle]');
+		if (btn) btn.setAttribute('data-theme-preference', preference);
+	}
+
+	/** @param {'auto' | 'light' | 'dark'} current @returns {'auto' | 'light' | 'dark'} */
+	function nextPreference(current) {
+		if (current === 'auto') return 'light';
+		if (current === 'light') return 'dark';
+		return 'auto';
+	}
+
+	function init() {
+		const btn = document.querySelector('[data-theme-toggle]');
+		if (!btn) return;
+		const pref = loadTheme();
+		btn.setAttribute('data-theme-preference', pref);
+		setTheme(pref);
+		btn.addEventListener('click', () => {
+			const current = btn.getAttribute('data-theme-preference') || 'auto';
+			const next = nextPreference(current);
+			setTheme(next);
+		});
+	}
+
+	// React to system theme changes when in auto
+	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+		if (loadTheme() === 'auto') {
+			document.documentElement.dataset.theme = getPreferredColorScheme();
+		}
+	});
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', init);
+	} else {
+		init();
+	}
+</script>

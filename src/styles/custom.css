@@ -1,2 +1,43 @@
-/* Left sidebar is default in Starlight; optional overrides */
-.sl-sidebar { position: sticky; top: 0; }
+:root {
+  --sl-content-width: 55rem; /* or whatever you want */
+}
+/* Left nav: Starlight uses class "sidebar", not "sl-sidebar" */
+.sidebar { position: sticky; top: 0; }
+
+/* Cheat sheet nav link: make it look like a special button */
+.sidebar a[href*="cheat-sheet"],
+#starlight__sidebar a[href*="cheat-sheet"] {
+  background: var(--sl-color-accent-low);
+  color: var(--sl-color-accent-high);
+  padding: 0.45em 0.75em;
+  border-radius: 0.375rem;
+  border: 1px solid var(--sl-color-accent);
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.sidebar a[href*="cheat-sheet"]:hover,
+.sidebar a[href*="cheat-sheet"]:focus,
+#starlight__sidebar a[href*="cheat-sheet"]:hover,
+#starlight__sidebar a[href*="cheat-sheet"]:focus {
+  background: var(--sl-color-accent);
+  color: var(--sl-color-accent-overlay);
+  border-color: var(--sl-color-accent-high);
+}
+.sidebar a[href*="cheat-sheet"][aria-current="page"],
+#starlight__sidebar a[href*="cheat-sheet"][aria-current="page"] {
+  background: var(--sl-color-accent);
+  color: var(--sl-color-accent-overlay);
+  border-color: var(--sl-color-accent-high);
+}
+
+/* Hero: reduce bottom spacing so content doesn’t feel separated */
+.hero {
+  padding-bottom: 1rem;
+}
+@media (min-width: 50rem) {
+  .hero {
+    padding-block-start: clamp(2.5rem, calc(1rem + 10vmin), 10rem);
+    padding-block-end: 1.5rem;
+  }
+}

@@ -1,57 +1,69 @@
 ---
 title: Cheat sheet
-description: Git commands at a glance — full-width reference.
+description: All commands in one place. Look up the one you need.
 template: splash
 tableOfContents: false
 ---
 
 <div class="cheat-sheet">
 
-## Most used (daily)
+**Use this page when you know what you want to do and need the exact command.** Short and clear. No lessons.
+
+---
+
+## Commands you use every day
 
 | Command | What it does |
 |---------|----------------|
-| `git status` | What’s changed, what’s staged, what branch you’re on. |
-| `git add <path>` | Stage changes (use `git add .` for everything in the dir). |
-| `git commit -m "message"` | Save a snapshot with a one-line message. |
-| `git push` | Send your commits to the remote. |
-| `git pull` | Get commits from the remote and update your branch. |
+| `git status` | Shows which files changed. Shows which branch you’re on. Run this a lot. |
+| `git add .` | Marks all changes in this folder for the next save. (You can use a file name instead of the dot.) |
+| `git commit -m "message"` | Saves a snapshot. The message is required. Write something short. |
+| `git push` | Sends your saves to the internet (for example GitHub). |
+| `git pull` | Gets saves from the internet and puts them in your folder. |
 
-## Branches
+---
 
-| Command | What it does |
-|---------|----------------|
-| `git branch` | List local branches. |
-| `git branch <name>` | Create a branch (doesn’t switch). |
-| `git switch <branch>` | Switch to a branch (preferred). |
-| `git checkout <branch>` | Same as switch; also used for files. |
-| `git merge <branch>` | Merge another branch into the current one. |
-
-## History & diff
+## Branches (when you want a separate line of work)
 
 | Command | What it does |
 |---------|----------------|
-| `git log` | Show commit history. |
-| `git log --oneline` | Short one-line-per-commit. |
-| `git diff` | Unstaged changes. |
-| `git diff --staged` | Staged changes. |
+| `git branch` | Lists your branches. |
+| `git branch name` | Creates a branch with that name. You’re still on the old branch. |
+| `git switch name` | Switches to that branch. (Use this one.) |
+| `git switch -c name` | Creates the branch and switches to it. One step. |
+| `git merge name` | Puts that branch’s changes into the branch you’re on. |
 
-## One-off / setup
+---
 
-| Command | What it does |
-|---------|----------------|
-| `git clone <url>` | Copy a repo from a URL to your machine. |
-| `git init` | Turn the current folder into a repo. |
-| `git remote -v` | List remotes (e.g. `origin`). |
-
-## Handy extras
+## See what changed or what happened
 
 | Command | What it does |
 |---------|----------------|
-| `git restore <file>` | Discard unstaged changes in a file. |
-| `git restore --staged <file>` | Unstage a file. |
-| `git stash` | Temporarily put changes aside. |
-| `git stash pop` | Bring stashed changes back. |
+| `git log` | Shows the list of commits. Press q to quit. |
+| `git log --oneline` | Same list but one line per commit. |
+| `git diff` | Shows line-by-line what you changed (only files you didn’t add yet). |
+| `git diff --staged` | Shows line-by-line what you added and will commit. |
+
+---
+
+## One-time or setup
+
+| Command | What it does |
+|---------|----------------|
+| `git clone url` | Copies a repo from the internet to your computer. |
+| `git init` | Makes this folder a Git repo. Do it once per project. |
+| `git remote -v` | Shows the internet address (for example origin). |
+
+---
+
+## Useful extras
+
+| Command | What it does |
+|---------|----------------|
+| `git restore file` | Throws away your changes in that file. File goes back to last commit. |
+| `git restore --staged file` | Un-stages the file. The file still has your changes. |
+| `git stash` | Puts your changes aside for a bit. Your folder looks like the last commit. |
+| `git stash pop` | Brings the stashed changes back. |
 
 </div>
 

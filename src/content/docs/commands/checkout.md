@@ -1,27 +1,25 @@
 ---
 title: git checkout / switch
-description: Switch branches or restore files.
+description: Switch branch or restore a file.
 ---
 
-**Switch branch (prefer `switch`):**
+**Switch branch (use switch):**
 
 ```bash
-git switch <branch>       # switch to branch
-git switch -c <branch>   # create and switch in one step
+git switch branch-name
+git switch -c new-branch-name
 ```
 
-**Legacy (same idea):**
+- `git switch branch-name` — Go to that branch.
+- `git switch -c new-branch-name` — Create that branch and go to it.
+
+**Old way (same idea):** `git checkout branch-name` and `git checkout -b new-branch-name`.
+
+**Restore a file (throw away your changes in that file):**
 
 ```bash
-git checkout <branch>
-git checkout -b <branch>  # create and switch
+git restore filename
+git checkout -- filename
 ```
 
-**Restore a file** (discard unstaged changes):
-
-```bash
-git restore <file>
-git checkout -- <file>   # older form
-```
-
-`switch` is the modern command for branches; `checkout` is still used for restoring files and in older docs.
+The file goes back to how it was at the last commit.

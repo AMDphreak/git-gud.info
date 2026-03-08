@@ -1,9 +1,9 @@
 ---
-title: Git workflow
-description: How the most common commands fit together — from clone to push.
+title: How the commands fit together
+description: A picture of when you use each command. No jargon.
 ---
 
-This diagram puts the **most common commands** near the start of the flow. You’ll use these every day; the rest are for specific situations.
+**This page explains the big picture.** It shows which commands you use first and which you use later. The commands you use every day are at the start.
 
 ```mermaid
 flowchart LR
@@ -35,13 +35,21 @@ flowchart LR
   B --> K
 ```
 
-## What each block does
+---
 
-| Block | Commands | When |
-|-------|----------|------|
-| **Start** | `clone` | Get a repo on your machine once. |
-| **Daily loop** | `status` → `add` → `commit` → `push` / `pull` | See changes, stage them, save a snapshot, sync with remote. |
-| **Branches** | `branch`, `checkout`/`switch`, `merge` | Work on a line of work, switch to it, bring it back. |
-| **Inspect** | `log`, `diff` | See history and what changed. |
+**What each box means**
 
-Go to the [Cheat sheet](/cheat-sheet/) for a full-width reference, or use the sidebar to jump to each command.
+| Box | Commands | When you use it |
+|-----|----------|------------------|
+| **Start** | clone | You copy a project from the internet to your computer. You do this once per project. |
+| **Daily loop** | status, add, commit, push, pull | You use these over and over. You see what changed. You choose what to save. You save. You send or get saves from the internet. |
+| **Branches** | branch, switch, merge | You want to try something without changing the main copy. You make a branch. You work there. When you’re done you bring it back into main. |
+| **Inspect** | log, diff | You want to see the history of saves or see exactly what changed in a file. |
+
+---
+
+**Where to go next**
+
+- Need a quick list of commands? Use the [Cheat sheet](/cheat-sheet/).
+- Need one command explained? Use the sidebar under “Reference: commands”.
+- Need to do a specific task? Use the [How-to guides](/how-to/put-project-on-github/).

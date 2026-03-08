@@ -1,38 +1,105 @@
 ---
-title: Git
-description: A sensible Git reference — common commands first.
+title: Git-GUD
+description: Git Guided Usage Document. A complete Git reference in simple words. For everyone.
 hero:
-  tagline: Common commands first. No maze, no jargon.
-  actions:
-    - text: Cheat sheet
-      link: /cheat-sheet/
-      icon: right-arrow
-    - text: Workflow diagram
-      link: /workflow/
-      icon: document
-      variant: minimal
+  tagline: Git Guided Usage Document. A complete Git reference in simple words. For everyone. Plain words. Short sentences. No jargon. Git gud, noob.
+---
+
+This site is a **complete point of reference** for Git. It is written so that anyone can understand it. Short sentences. Simple words. One idea at a time.
+
 ---
 
 <details class="getting-started-collapse">
-<summary><strong>Getting started</strong> — Install Git and make your first commit</summary>
+<summary><strong>I’m new. Where do I start?</strong></summary>
 
-1. **Install:** [git-scm.com](https://git-scm.com) or `winget install Git.Git` (Windows), `xcode-select --install` (macOS).
-2. **Configure once:** `git config --global user.name "Your Name"` and `git config --global user.email "you@example.com"`
-3. **Get a repo:** `git clone <url>` or `git init`
-4. **First commit:** `git add .` → `git commit -m "First commit"` → `git push -u origin main` (if you use a remote)
-
-Full steps: [Getting started](/getting-started/)
+1. Read [What is Git?](/what-is-git/) — a short answer in plain words.
+2. Follow [Getting started](/getting-started/) — install Git and make your first save, step by step.
+3. When you need to do a specific thing (for example put your project on GitHub), use a [How-to guide](/how-to/put-project-on-github/).
+4. When you need to look up a command, use the [Cheat sheet](/cheat-sheet/) or the command pages in the sidebar.
 
 </details>
 
-## Quick links
+---
 
-- **[Cheat sheet](/cheat-sheet/)** — Full-width command reference (most used first)
-- **[Workflow](/workflow/)** — Mermaid diagram: how clone, status, add, commit, push, pull, branch, merge, log, diff fit together
-- **[Getting started](/getting-started/)** — Install and first commit
-- **Commands** — Use the left sidebar for each command, ordered by how often you’ll use them
+## How this site is organized
+
+We use four types of docs. This follows the Diátaxis model. Pick the one that fits what you need.
+
+| Type | When to use it | Where |
+|------|----------------|--------|
+| **Tutorial** | You want to learn. You follow steps in order. | [Getting started](/getting-started/) |
+| **How-to guide** | You have a task. You want to do one thing. | [How-to guides](/how-to/put-project-on-github/) in the sidebar |
+| **Reference** | You need a command or a fact. You look it up. | [Cheat sheet](/cheat-sheet/) and [Commands](/commands/status/) in the sidebar |
+| **Explanation** | You want to understand how things fit together. | [What is Git?](/what-is-git/), [How the commands fit together](/workflow/), [Why Git feels hard](/why-git-feels-hard/) |
+
+Use the **left sidebar** to jump to any of these. The sidebar is fixed so you can always find your way.
+
+---
+
+**Acknowledgments.** This site’s attitude — that Git is powerful but its docs and interface don’t have to stay hostile — owes a lot to **[Steve Bennett’s “10 things I hate about Git”](https://stevebennett.me/2012/02/24/10-things-i-hate-about-git/)** (2012). We reference his core arguments in [Why Git feels hard](/why-git-feels-hard/) and in [About this site](/about-this-site/). Thank you, Steve.
+
+---
+
+## Created by
+
+<div class="author-credit">
+
+<img src="https://github.com/AMDphreak.png" alt="Ryan Johnson" width="80" height="80" loading="lazy" class="author-avatar" />
+
+**Ryan Johnson** created this site.
+
+<span class="author-buttons">
+  <a href="https://github.com/AMDphreak" class="author-btn">GitHub Profile</a>
+  <a href="https://ryanjohnson.dev" class="author-btn">Developer Profile</a>
+</span>
+
+</div>
 
 <style>{`
+.author-credit {
+  margin-top: 2rem;
+  padding: 1.5rem 1.75rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 100%);
+  border: 1px solid #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 24rem;
+}
+[data-theme="dark"] .author-credit {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-color: #475569;
+}
+.author-credit .author-avatar {
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.author-credit strong {
+  font-size: 1.125rem;
+}
+.author-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.author-credit .author-btn {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--sl-color-text-invert);
+  background: var(--sl-color-accent);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: filter 0.15s ease;
+}
+.author-credit .author-btn:hover {
+  filter: brightness(1.1);
+}
+[data-theme="dark"] .author-credit .author-btn {
+  color: var(--sl-color-text-invert);
+}
 .getting-started-collapse {
   margin: 1.5rem 0;
   padding: 1rem 1.25rem;
@@ -40,8 +107,17 @@ Full steps: [Getting started](/getting-started/)
   border-radius: 8px;
   background: #f1f5f9;
 }
+[data-theme="dark"] .getting-started-collapse {
+  border-color: #475569;
+  background:rgb(26, 35, 48);
+}
 .getting-started-collapse summary {
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.getting-started-collapse summary strong {
+  font-weight: 600;
 }
 `}</style>

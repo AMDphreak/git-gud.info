@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 44" fill="none" role="img" aria-label="Git">
+  <defs>
+    <!-- Matrix green glow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Branch icon: Git-style merge (two branches, one trunk), sharp and geometric -->
+  <g filter="url(#glow)" stroke="#00ff41" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter" fill="none">
+    <path d="M10 34 L10 18 L24 18 L24 8" />
+    <path d="M24 18 L38 18 L38 34" />
+    <circle cx="10" cy="34" r="2.2" fill="#00ff41"/>
+    <circle cx="24" cy="8" r="2.2" fill="#00ff41"/>
+    <circle cx="38" cy="34" r="2.2" fill="#00ff41"/>
+  </g>
+</svg>

@@ -1,12 +1,18 @@
 ---
 title: git diff
-description: Show what changed (unstaged or staged).
+description: Shows line-by-line what changed.
 ---
 
 ```bash
-git diff             # unstaged changes (working tree vs index)
-git diff --staged    # staged changes (index vs last commit)
-git diff main        # compare current branch to main
+git diff
+git diff --staged
+git diff main
 ```
 
-No arguments = see what you haven’t staged yet. `--staged` = what you’re about to commit.
+**What it does:**
+
+- `git diff` — Changes in your files that you didn’t add yet (unstaged). Green = added. Red = removed.
+- `git diff --staged` — Changes you added. What will go in the next commit.
+- `git diff main` — Compare your branch to main (or use another branch name).
+
+No arguments = see what you changed but didn’t stage.

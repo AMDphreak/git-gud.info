@@ -1,13 +1,18 @@
 ---
 title: git log
-description: Show commit history.
+description: Shows the list of commits.
 ---
 
 ```bash
-git log              # full history (q to quit)
-git log --oneline    # one line per commit
-git log -5            # last 5 commits
-git log --oneline -10
+git log
+git log --oneline
+git log -5
 ```
 
-Handy with a branch or file: `git log main`, `git log -- path/to/file`.
+**What it does:**
+
+- `git log` — Full list. Each commit shows message, author, date. Press **q** to quit.
+- `git log --oneline` — One line per commit. Shorter.
+- `git log -5` — Only the last 5 commits.
+
+You can add a branch or a file: `git log main`, `git log -- path/to/file`.

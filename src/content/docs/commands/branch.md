@@ -4,9 +4,15 @@ description: List or create branches.
 ---
 
 ```bash
-git branch           # list local branches
-git branch <name>    # create a branch (doesn’t switch to it)
-git branch -d <name> # delete a merged branch
+git branch
+git branch name
+git branch -d name
 ```
 
-To **switch** to a branch, use `git switch <name>` (or `git checkout <name>`). Creating and switching in one step: `git switch -c <name>`.
+**What it does:**
+
+- `git branch` — List branches. The one you’re on has a star.
+- `git branch name` — Create a branch. You don’t switch to it. Use `git switch name` to switch.
+- `git branch -d name` — Delete a branch (only if it was merged).
+
+To create and switch in one step: `git switch -c name`.

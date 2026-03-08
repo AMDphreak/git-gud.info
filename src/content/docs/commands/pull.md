@@ -1,11 +1,16 @@
 ---
 title: git pull
-description: Get new commits from the remote and update your branch.
+description: Gets commits from the internet and updates your folder.
 ---
 
 ```bash
 git pull
-git pull origin main   # pull from a specific remote branch
+git pull origin main
 ```
 
-`git pull` is effectively **fetch + merge**: it downloads remote changes and merges them into your current branch. Run it before you push to avoid “remote has changes” errors.
+**What it does:**
+
+- Gets new commits from the remote (for example GitHub).
+- Puts them in your folder. Your branch moves forward.
+
+Run this before you push if others (or you on another computer) added commits. That way you don’t get “remote has changes” errors.

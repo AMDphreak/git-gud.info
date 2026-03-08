@@ -1,17 +1,17 @@
 ---
 title: git status
-description: See what’s changed, staged, and which branch you’re on.
+description: Shows what changed and which branch you’re on.
 ---
 
 ```bash
 git status
 ```
 
-Shows:
+**What it shows:**
 
-- **Branch** you’re on
-- **Staged** changes (ready to commit)
-- **Unstaged** changes (modified but not staged)
-- **Untracked** files (not yet added)
+- The branch you’re on.
+- Files you changed but didn’t add yet (unstaged).
+- Files you added and are ready to commit (staged).
+- New files Git isn’t tracking yet (untracked).
 
-Run it often. No arguments; no dumb syntax.
+No extra arguments. Just run it. Run it often.
