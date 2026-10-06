@@ -1,0 +1,38 @@
+name: Build site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "site-build"
+  cancel-in-progress: false
+
+# GitHub Pages deploy is intentionally omitted: AMDphreak/git-gud.info is private and the
+# current GitHub plan cannot enable Pages here (create-pages returns 422). Re-add
+# actions/upload-pages-artifact + actions/deploy-pages (and pages:write / id-token:write)
+# after the repo is public or the account has a plan that supports private Pages, then
+# enable Settings -> Pages -> Source: GitHub Actions.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 9
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - uses: actions/upload-artifact@v7
+        with:
+          name: site-dist
+          path: dist
